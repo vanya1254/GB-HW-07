@@ -10,14 +10,16 @@ def input_handler(inp: int):
         case 2:
             save_db('database.txt')
         case 3:
-            show_all(get_db())
+            show_contact(get_db())
         case 4:
-            set_db(create_contact())
+            show_all(get_db())
         case 5:
-            change_contact(get_db())
+            set_db(create_contact())
         case 6:
-            remove_contact(get_db())
+            change_contact(get_db())
         case 7:
+            remove_contact(get_db())
+        case 8:
             exit_program()
             
 

@@ -2,6 +2,7 @@ def main_menu() -> int:
     print('\nMain menu:')     
     menu_list = ['Open file',
                  'Save file',
+                 'Show contact',
                  'Show all contacts',
                  'Create contact',
                  'Change contact',
@@ -67,13 +68,38 @@ def change_contact(db: list):
 
 
 def remove_contact(db: list):
+    print('\nRemove contact.')
+    
     user_choice = int(input('\nEnter number of contact => ')) - 1
-    check = input('Are you sure? (yes="y", no="n") => ')
+    check = input('\tAre you sure? (yes="y", no="n") => ')
     if check == 'y':
         del db[user_choice]
         print('\nDo not forget to save!')
     elif check == 'n':
         pass
+
+
+def show_contact(db: list):
+    list_tags = ['lastname', 'firstname', 'phone', 'comment']
+    print('\nFind contact')
+    print('\nBy which tag do you want to search?:\n',
+          '\t1. Lastname\n',
+          '\t2. Firstname\n',
+          '\t3. Phone\n',
+          '\t4. Comment',)
+    
+    user_choice = int(input('\nEnter number of tag => ')) - 1
+    user_value = input(f'Enter {list_tags[user_choice]} => ')
+    
+    for i in range(len(db)):
+        value_db = db[i][list_tags[user_choice]]
+        if user_value.lower() == value_db.lower():
+            print(f'\t{i + 1}', end='. ')
+            for v in db[i].values():
+                print(f'{v}', end=' ')
+            print()
+        else:
+            continue
 
 
 # def input_data():
